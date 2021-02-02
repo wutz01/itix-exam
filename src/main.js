@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import axios from 'axios'
-console.log(`router`, router)
+import vuetify from '@/plugins/vuetify'
+
 Vue.config.productionTip = false
 
 let http = axios.create({
@@ -23,5 +24,6 @@ Vue.http = http
 
 new Vue({
   router,
+  vuetify,
   render: h => h(App),
 }).$mount('#app')

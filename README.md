@@ -1,4 +1,4 @@
-# itix
+# John Perez's Exam for ITIX
 
 ## Project setup
 ```

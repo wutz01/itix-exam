@@ -1,26 +1,33 @@
 <template lang="pug">
-  div#app
-    router-view
+  v-app
+    v-app-bar(app color="white" flat)
+      v-avatar(:color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'" size='32')
+      v-tabs.ml-n9(right color="grey darken-1")
+        v-tab(v-for="link in links", :key="link")
+          | {{ link }}
+      //- v-avatar.hidden-sm-and-down(color="grey darken-1 shrink", size="32")
+    v-main.grey.lighten-3
+      v-container
+        router-view
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      links: [
+        'Login',
+        'Delivery',
+        'Blog',
+        'Help',
+        'Language',
+      ]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
