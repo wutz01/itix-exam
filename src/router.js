@@ -6,10 +6,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/products'
+    component: () => import(/* webpackChunkName: 'product' */ '@/views/products/index'),
+    redirect: '/products',
+    children: [
+      { path: 'products', name: 'products', component: () => import(/* webpackChunkName: 'product' */ '@/views/products/listing') },
+      { path: 'product/:id', name: 'view-product', component: () => import(/* webpackChunkName: 'product' */ '@/views/products/view') }
+    ]
   },
-  { path: '/products', name: 'products', component: () => import(/* webpackChunkName: 'error' */ '@/views/product-listing') },
-  { path: '/product/:id', name: 'view-product', component: () => import(/* webpackChunkName: 'error' */ '@/views/product') }
+
 ]
 
 const router = new VueRouter({
